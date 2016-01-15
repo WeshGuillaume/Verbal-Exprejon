@@ -4,7 +4,20 @@ A JSVerbalExpression port.. with a Lisp
 
 ## Usage
 
-FIXME
+``` clojure
+
+(def url
+  (->> (vex)
+       (then "http")
+       (maybe "s")
+       (then "://")
+       (maybe "www.")
+       (anything-but " ")
+       (end-of-line)))
+
+(re-find url "http://www.google.com")
+
+```
 
 ## License
 
