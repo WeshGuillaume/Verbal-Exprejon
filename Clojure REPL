@@ -1,0 +1,33 @@
+#'regex.core/regex-characters
+user=> #'regex.core/examples
+user=> #'regex.core/to-regex
+user=> #'regex.core/random-regex
+user=> #'regex.core/new-population
+user=> #'regex.core/score
+user=> #'regex.core/compute-fitnesses
+user=> #'regex.core/select
+user=> #'regex.core/insert-regex
+user=> #'regex.core/remove-regex
+user=> #'regex.core/mutation
+user=> #'regex.core/mutate-population
+user=> #'regex.core/population
+user=> #"tI aKW eSw"
+#"o0v 2V"
+#"'OV^r*\"Z"
+#"O s7I"
+#"/II} O"
+#"9G"
+#"DsaQc
+"
+#"$ I3f"
+#"qj"
+#"3F"
+(nil nil nil nil nil nil nil nil nil nil)
+#"tI aKW eSw"
+#"o0v 2V"
+#"'OV^r*\"Z"
+#"O s7I"
+#"/II} O"
+
+user=> #'regex.core/mutate-population
+user=>
