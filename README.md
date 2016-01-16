@@ -1,5 +1,20 @@
-# verbal-exprejon
+<br>
+<h1 align="center">Verbal Exprejon</h1>
 
+<p align="center">
+  <a href="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon"><img src="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon.svg?branch=master" alt="travis"></a>
+</p>
+
+<p align="center">
+<br>
+|
+<b><a href="#introduction"> Introduction </a></b>|
+<b><a href="#usage"> Usage </a></b>|
+
+</p>
+<br>
+
+---
 ## Usage
 
 FIXME
