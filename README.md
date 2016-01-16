@@ -16,7 +16,7 @@
 ---
 ## Usage
 
-### Create a URL matcher
+### Create a Regex
 
 ``` clojure
 
