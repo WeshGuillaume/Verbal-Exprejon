@@ -1,7 +1,5 @@
 # Verbal-Exprejon
 
-A JSVerbalExpression port.. with a Lisp
-
 ## Usage
 
 ``` clojure
