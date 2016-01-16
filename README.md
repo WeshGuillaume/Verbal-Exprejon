@@ -1,11 +1,27 @@
 # verbal-exprejon
 
-A Clojure library designed to ... well, that part is up to you.
-
 ## Usage
 
 FIXME
+=======
+# Verbal-Exprejon
 
+## Usage
+
+``` clojure
+
+(def url
+  (->> (vex)
+       (then "http")
+       (maybe "s")
+       (then "://")
+       (maybe "www.")
+       (anything-but " ")
+       (end-of-line)))
+
+(re-find url "http://www.google.com")
+
+```
 ## License
 
 Copyright © 2016 FIXME
