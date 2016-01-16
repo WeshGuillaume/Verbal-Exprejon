@@ -106,13 +106,6 @@
         (then " ")
         (then domain)))
 
-(println (re-matches (->> (url-name "google")) "https://google.com google"))
-
-(re-matches url-name "https://www.google.com Google")
-
-(def url-name? (matcher url-name "google"))
-(url-name? "http://google.com/ googlge")
-
 (defn hour?
   ([] (hour? (vex)))
   ([regex]
@@ -155,20 +148,18 @@
                                   (maybe (->> (maybe (->> (then " ") (OR " and ") (OR ", ") (OR ":")))
                                               (second?)))))))))
 
-(println (->> (time?)))
-
 (defn testit
   [time]
   (not (nil? (re-matches (->> (time?)) time))))
 
-(testit "12h")
-(testit "12h5")
-(testit "12h05")
-(testit "12h30m")
-(testit "12:07")
-(testit "12hours")
-(testit "12hours and 3 minutes")
-(testit "12:5:4")
-(testit "12h and 5 minutes")
-(testit "5 hours")
-(testit "12 minutes")
+; (testit "12h")
+; (testit "12h5")
+; (testit "12h05")
+; (testit "12h30m")
+; (testit "12:07")
+; (testit "12hours")
+; (testit "12hours and 3 minutes")
+; (testit "12:5:4")
+; (testit "12h and 5 minutes")
+; (testit "5 hours")
+; (testit "12 minutes")
