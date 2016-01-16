@@ -1,7 +1,7 @@
 (ns verbal-exprejon.core
   (:use [clojure.string :only (join)]))
 
-(defn- re-add
+(defn re-add
   "Add a new part to the regex"
   [regex add]
   (re-pattern (str regex add)))
@@ -91,7 +91,7 @@
                       (then "://")
                       (maybe "www.")
                       (then domain)
-                      (end-of-line))))
+                      (anything-but " ")
 
 (def url-name
   (->>  (vex)
