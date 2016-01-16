@@ -91,7 +91,7 @@
                       (then "://")
                       (maybe "www.")
                       (then domain)
-                      (anything-but " ")
+                      (anything-but " "))))
 
 (def url-name
   (->>  (vex)
