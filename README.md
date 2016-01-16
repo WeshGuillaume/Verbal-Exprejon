@@ -21,8 +21,7 @@
 ``` clojure
 
 (def url
-  (->> (vex)
-       (then "http")
+  (->> (then "http")
        (maybe "s")
        (then "://")
        (maybe "www.")
@@ -42,15 +41,15 @@ and output a regex.
 
 ; Match a `domain` url like https://domain.com
 
-(defn url?
-  [domain regex]
-  (re-add regex (->>  (vex)
-                      (then "http")
-                      (maybe "s")
-                      (then "://")
-                      (maybe "www.")
-                      (then domain)
-                      (anything-but " "))))
+(defpattern url?
+  "Match if it is a url"
+  [domain]
+  (->>  (then "http")
+        (maybe "s")
+        (then "://")
+        (maybe "www.")
+        (then domain)
+        (anything-but " ")))
 
 ```
 
@@ -60,13 +59,17 @@ Match stuff like `https://www.google.com Hello` or `https://www.google.com World
 
 ``` clojure
 
-(def url-name
-  (->>  (vex)
-        (url? "google")
+(defpattern url-name
+  "Match if it is a domain url followed by its name"
+  [domain]
+  (->>  (url? domain)
         (then " ")
-        (anything-but " ")))
+        (then domain)))
 
-(re-matches url-name "https://www.google.com Google")
+(def match (matcher url-name "google"))
+(println (match "https://www.google.com google"))
+
+;; -> true
 
 ```
 
