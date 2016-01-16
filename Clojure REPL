@@ -1,0 +1,23 @@
+;; This is a text editor and also a Clojure REPL.  It behaves differently than a typical Clojure REPL. You can type anywhere and modify any of the displayed text. Commands are not sent by typing in the REPL and pressing enter. They are sent through keyboard shortcuts.
+
+ ;; REPL Execution Keybindings
+ ;; Note: These keybindings can be executed from any file and the results will be displayed in this REPL.
+ ;; The keybindings are almost all of the form ctrl + comma, release, and then another key.
+ ;; See the settings for more keybindings.
+
+ ;; ctrl-, then b - execute block. Finds the block of Clojure code your cursor is in and executes that.
+
+ ;; Try it now. Put your cursor inside this block and press ctrl and comma together,
+ ;; release, then press b.
+ (+ 2 3)
+
+ ;; ctrl-, s - Executes the selection. Sends the selected text to the REPL.
+
+ ;; Try it now. Select these three lines and press ctrl and comma together,
+ ;; release, then press s.
+ (println "hello 1")
+ (println "hello 2")
+ (println "hello 3")
+
+ ;; You can disable this help text in the settings.
+;; Loading REPL...
