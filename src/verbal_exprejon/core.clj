@@ -29,6 +29,14 @@
         ([~@param-vector regex#]
          (re-add regex# ~body)))))
 
+(defpattern one-or-more
+  "One or more of the previous middleware"
+  [] "+")
+
+(defpattern zero-or-more
+  "Zero or more of the previous middleware"
+  [] "*")
+
 (defpattern any-blank
   "sequence of blanks characters"
   [] (->> (any "\\s\\t\\n")
@@ -80,14 +88,6 @@
 (defpattern tab
   "Matches a tabulation"
   [] " ")
-
-(defpattern one-or-more
-  "One or more of the previous middleware"
-  [] "+")
-
-(defpattern zero-or-more
-  "Zero or more of the previous middleware"
-  [] "*")
 
 (defpattern word
   "Matches any word (case-insensitive)"
