@@ -9,11 +9,11 @@
   [pattern & args]
   (fn
     [candidate]
-    (not (nil? (re-matches (->> (apply pattern args)) candidate)))))
+    (not (nil? (re-matches (apply pattern args) candidate)))))
 
 (defn print-pattern
   "Print the resulting pattern"
-  [pattern] (println (->> pattern)))
+  [pattern] (println pattern))
 
 (defn re-add
   "Add a new part to the regex"
