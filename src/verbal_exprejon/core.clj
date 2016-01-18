@@ -2,6 +2,8 @@
   (:use [clojure.string :only (join)])
   (:use [clojure.pprint]))
 
+(defn vex [] #"")
+
 (defn matcher
   "Transform a pattern into a test matching function"
   [pattern & args]
@@ -9,23 +11,28 @@
     [candidate]
     (not (nil? (re-matches (->> (apply pattern args)) candidate)))))
 
+(defn print-pattern
+  "Print the resulting pattern"
+  [pattern] (println (->> pattern)))
+
 (defn re-add
   "Add a new part to the regex"
   [regex add]
   (re-pattern (str regex add)))
 
 (defmacro defpattern
-  ([fn-name param-vector body]
-   (defpattern fn-name "" param-vector body))
-  ([fn-name documentation param-vector body]
-   `(def ~fn-name
-       (fn
-         ([~@param-vector]
-          (~fn-name ~@param-vector (vex)))
-         ([~@param-vector regex#]
-          (re-add regex# ~body))))))
+  [fn-name documentation param-vector body]
+  `(def ~fn-name
+      (fn
+        ([~@param-vector]
+         (~fn-name ~@param-vector (vex)))
+        ([~@param-vector regex#]
+         (re-add regex# ~body)))))
 
-(defn vex [] #"")
+(defpattern any-blank
+  "sequence of blanks characters"
+  [] (->> (any "\\s\\t\\n")
+          (zero-or-more)))
 
 (defpattern anything
   "Matches everything"
@@ -74,15 +81,22 @@
   "Matches a tabulation"
   [] " ")
 
+(defpattern one-or-more
+  "One or more of the previous middleware"
+  [] "+")
+
+(defpattern zero-or-more
+  "Zero or more of the previous middleware"
+  [] "*")
+
 (defpattern word
   "Matches any word (case-insensitive)"
   [] "[a-zA-Z]+")
 
 (defn OR
   "OR operator.
-   Example: (OR)
-   FIX"
-  [value] (then value #"|"))
+   Example: (OR ['value 1' 'value 2'])"
+  [values] (str "(" (join "|" values) ")"))
 
 (defpattern times
   "Specify the interval"
@@ -96,70 +110,16 @@
         (then "://")
         (maybe "www.")
         (then domain)
+        (then ".")
         (anything-but " ")))
 
-(defpattern url-name
-  "Match if it is a domain url followed by its name"
-  [domain]
-  (->>  (vex)
-        (url? domain)
-        (then " ")
-        (then domain)))
+(defpattern words-split-by
+  "Matches a sequence of words delimited by any of the characters
+   in ignore-vector"
+  [ignore-vector]
+  (let [any-delimiter (join "|" ignore-vector)]
+    (str "(((" any-delimiter ")+)?([a-zA-Z]+))+")))
 
-(defn hour?
-  ([] (hour? (vex)))
-  ([regex]
-   (re-add regex (->> (interval [\0 \9])
-                      (times [1 2])
-                      (maybe " ")
-                      (maybe (->> (then "h")
-                                  (OR (->> (maybe " ")
-                                           (then "hour")
-                                           (maybe "s")))))))))
-
-(defn minute?
- ([] (minute? (vex)))
- ([regex]
-  (re-add regex (->> (interval [\0 \9])
-                     (times 1 2)
-                     (maybe (->> (maybe " ")
-                                 (then "m")
-                                 (OR (->> (maybe " ")
-                                          (then "minute")
-                                          (maybe "s")))))))))
-
-
-(defn second?
- ([] (second? (vex)))
- ([regex]
-  (re-add regex (->> (interval [\0 \9])
-                     (times 1 2)
-                     (maybe (->> (maybe " ")
-                                 (OR (->> (maybe " ")
-                                          (then "second")
-                                          (maybe "s")))))))))
-
-(defn time?
-  ([] (time? (vex)))
-  ([regex]
-   (re-add regex (->> (hour?)
-                      (maybe (->> (maybe (->> (then " ") (OR " and ") (OR ", ") (OR ":")))
-                                  (minute?)
-                                  (maybe (->> (maybe (->> (then " ") (OR " and ") (OR ", ") (OR ":")))
-                                              (second?)))))))))
-
-(defn testit
-  [time]
-  (not (nil? (re-matches (->> (time?)) time))))
-
-; (testit "12h")
-; (testit "12h5")
-; (testit "12h05")
-; (testit "12h30m")
-; (testit "12:07")
-; (testit "12hours")
-; (testit "12hours and 3 minutes")
-; (testit "12:5:4")
-; (testit "12h and 5 minutes")
-; (testit "5 hours")
-; (testit "12 minutes")
+(defpattern sentence
+  "Matches a sentence of words split by spaces"
+  [] (->> (words-split-by ["\\s"])))
