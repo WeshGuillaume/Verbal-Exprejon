@@ -51,7 +51,7 @@ and output a regex.
 
 ### Reuse your middlewares
 
-Match stuff like `https://www.google.com Hello` or `https://www.google.com World`
+Match stuff like `https://www.facebook.com facebook` or `https://www.google.com google`
 
 ``` clojure
 
