@@ -76,7 +76,7 @@
 
 (defpattern interval
   "Matches a range of values.
-   Example (range \\a \\z \\A \\Z 0 9)
+   Example (interval \\a \\z \\A \\Z 0 9)
    will match every characters between
    a and z,
    A and Z,
