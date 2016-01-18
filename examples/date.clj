@@ -28,7 +28,7 @@
                  (maybe (OR ["and" " " ", " ":"]))
                  (any-blank))))
 
-(defpattern absolute-time-pattern
+(defpattern time-pattern
   "Matches a time"
   [] (->> (maybe (->> (hour)
                       (time-separator)))
