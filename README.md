@@ -100,7 +100,7 @@ Match stuff like `https://www.google.com Hello` or `https://www.google.com World
                  (maybe (OR ["and" " " ", " ":"]))
                  (any-blank))))
 
-(defpattern absolute-time-pattern
+(defpattern time-pattern
   "Matches a time"
   [] (->> (maybe (->> (hour)
                       (time-separator)))
