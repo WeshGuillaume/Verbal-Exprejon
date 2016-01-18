@@ -143,6 +143,8 @@ Matches a sequence of words split by spaces
 
 ## License
 
+This has been done by a Clojure newbie.
+
 Copyright © 2016 Guillaume Badi
 
 Distributed under the MIT License
