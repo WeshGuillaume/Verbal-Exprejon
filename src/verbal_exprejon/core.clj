@@ -37,6 +37,10 @@
   "Zero or more of the previous middleware"
   [] "*")
 
+(defpattern any
+  "Matches any of the letters in value"
+  [value] (str "([" value "])"))
+
 (defpattern any-blank
   "sequence of blanks characters"
   [] (->> (any "\\s\\t\\n")
@@ -65,10 +69,6 @@
 (defpattern then
   "Matches the specified value, literally"
   [value] (str "(" value ")"))
-
-(defpattern any
-  "Matches any of the letters in value"
-  [value] (str "([" value "])"))
 
 (defpattern line-break
   "Matches a line break"
