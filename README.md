@@ -1,16 +1,12 @@
 <br>
 <h1 align="center">Verbal Exprejon</h1>
 
-<p align="center">VerbalExpressions with a lisp</p>
+<p align="center"><a href="https://github.com/VerbalExpressions/JSVerbalExpressions/">VerbalExpressions</a> with a lisp</p>
 <p align="center">
   <a href="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon"><img src="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon.svg?branch=master" alt="travis"></a>
 </p>
 <br>
-<p align="center">
-|
-<b><a href="#usage"> Usage </a></b>|
 
-</p>
 <br>
 
 ---
@@ -164,6 +160,8 @@ Matches a sequence of words split by any delimiters in the provided vector
 Matches a sequence of words split by spaces
 
 ## License
+
+This has been done by a Clojure newbie.
 
 Copyright © 2016 Guillaume Badi
 
