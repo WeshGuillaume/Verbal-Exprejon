@@ -4,6 +4,7 @@
 <p align="center"><a href="https://github.com/VerbalExpressions/JSVerbalExpressions/">VerbalExpressions</a> with a lisp</p>
 <p align="center">
   <a href="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon"><img src="https://travis-ci.org/GuillaumeBadi/Verbal-Exprejon.svg?branch=master" alt="travis"></a>
+  <a href="https://github.com/GuillaumeBadi/vimconfig"><img src="http://imgh.us/Slice_1_2.svg" width="98" alt="travis"></a>
 </p>
 <br>
 
